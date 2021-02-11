@@ -1,0 +1,17 @@
+version: '3'
+services:
+  server:
+    image: local/test-crud:latest
+    build:
+      context: .
+    container_name: test-crud
+    env_file: .env.development
+    environment:
+      - PORT=3010
+    ports:
+      - '3010:3010'
+    volumes:
+      - './src:/app/src'
+      - './nest-cli.json:/app/nest-cli.json'
+      - './tsconfig.json:/app/tsconfig.json'
+      - './tsconfig.build.json:/app/tsconfig.build.json'
